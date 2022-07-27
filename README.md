@@ -3,6 +3,7 @@
 A mini e-commerce application built with Rails 6.1 for purposes of teaching Rails by example.
 
 ## Setup
+sudo apt-get install imagemagick libmagickcore-dev libmagickwand-dev
 
 1. Run `bundle install` to install dependencies
 2. Create `config/database.yml` by copying `config/database.example.yml`
