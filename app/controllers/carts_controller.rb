@@ -4,8 +4,8 @@ class CartsController < ApplicationController
 
   end
 
-  def empty
-        
+  def empty?
+    cart.any?
   end
 
   def add_item
