@@ -1,45 +1,37 @@
-class Admin::ProductsController < ApplicationController
+class Admin::CategoriesController < ApplicationController
 
   # http_basic_authenticate_with name: "aaa", password: "aaa"
-  http_basic_authenticate_with name: ENV["ADMUSR"], password: ENV["ADMPWR"]
+  # http_basic_authenticate_with name: ENV["ADMUSR"], password: ENV["ADMPWR"]
   
 
     
 
   def index
-    @products = Product.order(id: :desc).all
+    @categories = Category.order(id: :desc).all
   end
 
   def new
-    @product = Product.new
+    @categories = Category.new
   end
 
   def create
-    @product = Product.new(product_params)
+    @categories = Category.new(category_params)
 
-    if @product.save
-      redirect_to [:admin, :products], notice: 'Product created!'
+    if @category.save
+      redirect_to [:admin, :categories], notice: 'Category created!'
     else
       render :new
     end
   end
 
-  def destroy
-    @product = Product.find params[:id]
-    @product.destroy
-    redirect_to [:admin, :products], notice: 'Product deleted!'
-  end
 
   private
 
-  def product_params
+  def category_params
     params.require(:product).permit(
       :name,
-      :description,
-      :category_id,
-      :quantity,
-      :image,
-      :price
+      
+                  
     )
   end
 
