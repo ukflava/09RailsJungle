@@ -3,5 +3,7 @@ class Admin::DashboardController < ApplicationController
 
 
   def show
+    @category = Category.all
+    @product = Product.all
   end
 end
