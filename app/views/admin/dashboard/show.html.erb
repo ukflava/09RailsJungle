@@ -1,14 +1,21 @@
-<h1>Admin Dashboard</h1>
-<div class="page-header">
-<span>All categories</span>
-      <a href="/admin/categories"><%= @category.length %></a>
-    
-      </div>
+<section class="article">
 
-      <div>
-    
-      <span>All products</span>
-      <a href="/admin/products"><%= @product.length %></a>
+<h1>Admin Dashboard</h1>
+
+
+<div class="product-detail", style="float:center" >
+<span class="order-summary jumbotron">All categories</span>
+<a href="/admin/categories"><%= @category.length %></a>
+</div>
+
+<div class="product-detail", style="float:center">
+<span>All products</span>
+<a href="/admin/products"><%= @product.length %></a>
+</div>
+
+         
+  
   
 
-</div>
+
+</section>
