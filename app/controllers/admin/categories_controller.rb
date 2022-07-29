@@ -1,8 +1,11 @@
 class Admin::CategoriesController < ApplicationController
   # http_basic_authenticate_with name: "aaa", password: "aaa"
-  # http_basic_authenticate_with name: ENV["ADMUSR"], password: ENV["ADMPWR"]
+  http_basic_authenticate_with name: ENV["ADMUSR"], password: ENV["ADMPWR"]
   
-
+  def show
+    @category = Category.find(params[:id])
+    @products = @category.products.order(created_at: :desc)
+  end
     
 
   def index

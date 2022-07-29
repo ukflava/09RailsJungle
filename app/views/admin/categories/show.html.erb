@@ -1,0 +1,25 @@
+<section class="categories-show">
+
+  <header class="page-header">
+    <h1>
+      <%= @category.name %>
+      (<%= pluralize @products.size, 'product' %>)
+    </h1>
+  </header>
+
+  <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th colspan="2">Product</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>Qty Remaining</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @products %>
+      </tbody>
+    </table>
+
+</section>
