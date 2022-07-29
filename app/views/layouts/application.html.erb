@@ -16,12 +16,21 @@
 
   <main class="container">
 
-  <% if current_user %>
-  Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
-<% else %>
-  <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
-<% end %>
+#   <% if current_user %>
+#   Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
+# <% else %>
+#   <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
+# <% end %>
 
+
+<% if notice %>
+      	    <%= notice %>
+	<% end %>
+	
+	<% if alert %>
+      	    <%= alert %>
+	<% end %>
+  
 <%= yield %>
     
   </main>

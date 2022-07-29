@@ -12,9 +12,10 @@ Rails.application.routes.draw do
   end
 
   resources :orders, only: [:create, :show]
-  
-  get '/signup' => 'users#new'
-  post '/users' => 'users#create'
+
+	get 'users/new' => 'users#new', as: :new_user
+	get 'signup' => 'users#new'
+	post 'users' => 'users#create'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
