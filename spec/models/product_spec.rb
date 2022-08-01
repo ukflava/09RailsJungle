@@ -14,6 +14,19 @@ RSpec.describe Product, type: :model do
       expect(@product.id).to be_nil
     end
 
+    it 'should save new records' do
+      @product = Product.new({
+        name:  'Giant Test2',
+        description: "The Giant test2",
+        image: open_asset('plante_1.jpg'),
+        quantity: 2,
+        price: 64.99
+      })
+      @product.save!
+
+      expect(@product.id).to be_present
+    end
+
 
 
     # validates :name, presence: true
@@ -24,4 +37,5 @@ RSpec.describe Product, type: :model do
     # expect(@product.name).to be_present
     # validation tests/examples here
   end
+
 end
