@@ -26,8 +26,27 @@ RSpec.describe Product, type: :model do
 
       @product.save!
 
-      expect(@product.name).to be_present
+      expect(@product).to be_present
+      expect(@product.name).to match("Giant Test 2")
     end
+
+    it 'should not save without price' do
+      @product2 = Product.new
+      @product2.name = "Giant Test 2"
+      @product2.price = nil
+      @product2.quantity = 1
+      @product2.category_id = @category.id
+
+
+      @product2.save!
+
+      expect(@product2).to be_nil
+      # expect(@product.name).to match("Giant Test 2")
+    end
+
+#  Set all fields to a value but the validation field being tested to nil
+# Test that the expect error is found within the .errors.full_messages array
+# expect { ... }.to raise_error(ErrorClass, "message")
 
 
 
