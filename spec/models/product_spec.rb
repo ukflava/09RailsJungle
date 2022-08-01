@@ -4,6 +4,8 @@ RSpec.describe Product, type: :model do
 
   before(:each) do 
      @category = Category.new
+     @category.id = 99
+     @category.name = 'Giant Test Category'
 
   @category.save!
   end
@@ -15,16 +17,16 @@ RSpec.describe Product, type: :model do
     end
 
     it 'should save new records' do
-      @product = Product.new({
-        name:  'Giant Test2',
-        description: "The Giant test2",
-        image: open_asset('plante_1.jpg'),
-        quantity: 2,
-        price: 64.99
-      })
+      @product = Product.new
+      @product.name = "Giant Test 2"
+      @product.price = 500
+      @product.quantity = 1
+      @product.category_id = @category.id
+
+
       @product.save!
 
-      expect(@product.id).to be_present
+      expect(@product.name).to be_present
     end
 
 
