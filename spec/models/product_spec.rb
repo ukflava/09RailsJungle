@@ -44,7 +44,43 @@ RSpec.describe Product, type: :model do
       expect(@product).to_not be_valid
       # expect(@product).to raise_error("Name can't be blank")
       expect(@product.errors.full_messages[0]).to be_present
+      expect(@product.errors.full_messages[0]).to include("Name can't be blank")
       # expect(@product.name).to match("Giant Test 2")
+    end
+
+    it 'should NOT save with no quantity' do
+      @product = Product.new
+      @product.name = "Giant Test 2"
+      @product.price = 500
+      @product.quantity = nil
+      @product.category_id = @category.id
+
+
+      @product.save
+      p @product.errors.full_messages[0]
+
+      expect(@product).to_not be_valid
+      
+      expect(@product.errors.full_messages[0]).to be_present
+      expect(@product.errors.full_messages[0]).to include("Quantity can't be blank")
+      
+    end
+
+    it 'should NOT save with no category' do
+      @product = Product.new
+      @product.name = "Giant Test 2"
+      @product.price = 500
+      @product.quantity = 1
+      @product.category_id = nil
+
+
+      @product.save
+      p @product.errors.full_messages[0]
+
+      expect(@product).to_not be_valid
+      expect(@product.errors.full_messages[0]).to be_present
+      expect(@product.errors.full_messages[0]).to include("Category must exist")
+      
     end
 
 
