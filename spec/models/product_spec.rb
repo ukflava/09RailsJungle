@@ -39,9 +39,11 @@ RSpec.describe Product, type: :model do
 
 
       @product.save
-      p @product.errors
+      p @product.errors.full_messages[0]
 
       expect(@product).to_not be_valid
+      # expect(@product).to raise_error("Name can't be blank")
+      expect(@product.errors.full_messages[0]).to be_present
       # expect(@product.name).to match("Giant Test 2")
     end
 
