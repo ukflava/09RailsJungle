@@ -60,7 +60,7 @@ RSpec.describe User, type: :model do
 
     @user2.save
     
-    p @user2.errors.full_messages
+    # p @user2.errors.full_messages
    expect(@user2).to_not be_valid
    expect(@user2.errors.full_messages[0]).to be_present
    expect(@user2.errors.full_messages[0]).to include("Email has already been taken")
@@ -110,9 +110,15 @@ RSpec.describe User, type: :model do
   end
 
   describe '.authenticate_with_credentials' do
-    it 'should not exist if not saved' do
-      @product = Product.new
-      expect(@product.id).to be_nil
+
+
+    it 'should login if correct pair name-pass' do
+
+      @test_user = @user.authenticate_with_credentials('test@test.com', 'basicpassword')
+
+      p @test_user.first_name
+
+      expect(@test_user).to be_valid
     end
 
     # examples for this class method here
