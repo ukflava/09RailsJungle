@@ -113,20 +113,30 @@ RSpec.describe User, type: :model do
 
 
     it 'should login if correct pair name-pass' do
-
       @test_user = User.authenticate_with_credentials('test@test.com', 'basicpassword')
-
       # p @test_user.first_name
       # expect(@test_user).to be_valid
       expect(@test_user.first_name).to match("sampleName")
     end
     it 'should login if email with whitespaces' do
-
       @test_user = User.authenticate_with_credentials('   test@test.com   ', 'basicpassword')
-
       # p @test_user.first_name
-      # expect(@test_user).to be_valid
       expect(@test_user.first_name).to match("sampleName")
+      expect(@test_user).to eql(@user)
+    end
+    it 'should login if email in CASE' do
+      @test_user = User.authenticate_with_credentials('TEST@TEST.com   ', 'basicpassword')
+      # p @test_user.first_name
+      expect(@test_user.first_name).to match("sampleName")
+      expect(@test_user).to eql(@user)
+    end
+
+    it 'should fail wrong password' do
+      @test_user = User.authenticate_with_credentials('test@test.com', 'wrongpassword')
+      p @test_user
+      # expect(@test_user.first_name).to match("sampleName")
+      expect(@test_user).to_not eql(@user)
+      expect(@test_user).to be_nil
     end
 
     # examples for this class method here
