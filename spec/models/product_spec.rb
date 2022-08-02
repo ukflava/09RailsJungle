@@ -39,7 +39,7 @@ RSpec.describe Product, type: :model do
 
 
       @product.save
-      p @product.errors.full_messages[0]
+      # p @product.errors.full_messages[0]
 
       expect(@product).to_not be_valid
       # expect(@product).to raise_error("Name can't be blank")
@@ -57,7 +57,7 @@ RSpec.describe Product, type: :model do
 
 
       @product.save
-      p @product.errors.full_messages[0]
+      # p @product.errors.full_messages[0]
       expect(@product).to_not be_valid
       expect(@product.errors.full_messages[0]).to be_present
       expect(@product.errors.full_messages[0]).to include("Quantity can't be blank")
@@ -73,7 +73,7 @@ RSpec.describe Product, type: :model do
 
 
       @product.save
-      p @product.errors.full_messages[0]
+      # p @product.errors.full_messages[0]
 
       expect(@product).to_not be_valid
       expect(@product.errors.full_messages[0]).to be_present
@@ -91,7 +91,7 @@ RSpec.describe Product, type: :model do
 
 
       @product2.save
-      p @product2.errors.full_messages[0]
+      # p @product2.errors.full_messages[0]
 
       expect(@product2).to_not be_valid
       expect(@product2.errors.full_messages[0]).to be_present
