@@ -11,7 +11,7 @@ RSpec.describe Product, type: :model do
   end
 
   describe 'Validations' do
-    it 'should not exist for new records' do
+    it 'should not exist if not saved' do
       @product = Product.new
       expect(@product.id).to be_nil
     end
@@ -58,9 +58,7 @@ RSpec.describe Product, type: :model do
 
       @product.save
       p @product.errors.full_messages[0]
-
       expect(@product).to_not be_valid
-      
       expect(@product.errors.full_messages[0]).to be_present
       expect(@product.errors.full_messages[0]).to include("Quantity can't be blank")
       
@@ -84,20 +82,22 @@ RSpec.describe Product, type: :model do
     end
 
 
-    # it 'should not save without price' do
-    #   @product2 = Product.new
-    #   @product2.name = "Giant Test 2"
-    #   @product2.price = nil
-    #   @product2.quantity = 1
-    #   @product2.category_id = @category.id
+    it 'should not save without price' do
+      @product2 = Product.new
+      @product2.name = "Giant Test 2"
+      @product2.price = nil
+      @product2.quantity = 1
+      @product2.category_id = @category.id
 
 
-    #   @product2.save!
-    #   p @product2.errors
+      @product2.save
+      p @product2.errors.full_messages[0]
 
-    #   expect(@product2).to be_nil
-    #   # expect(@product.name).to match("Giant Test 2")
-    # end
+      expect(@product2).to_not be_valid
+      expect(@product2.errors.full_messages[0]).to be_present
+      expect(@product2.errors.full_messages[0]).to include("Price must be greater than 0")
+      # expect(@product.name).to match("Giant Test 2")
+    end
 
 #  Set all fields to a value but the validation field being tested to nil
 # Test that the expect error is found within the .errors.full_messages array
