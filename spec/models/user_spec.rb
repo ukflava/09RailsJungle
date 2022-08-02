@@ -124,15 +124,22 @@ RSpec.describe User, type: :model do
       expect(@test_user.first_name).to match("sampleName")
       expect(@test_user).to eql(@user)
     end
-    it 'should login if email in CASE' do
+    it 'should login if email in DIFF CASE' do
       @test_user = User.authenticate_with_credentials('TEST@TEST.com   ', 'basicpassword')
       # p @test_user.first_name
       expect(@test_user.first_name).to match("sampleName")
       expect(@test_user).to eql(@user)
     end
 
-    it 'should fail wrong password' do
+    it 'should fail if wrong password' do
       @test_user = User.authenticate_with_credentials('test@test.com', 'wrongpassword')
+      p @test_user
+      # expect(@test_user.first_name).to match("sampleName")
+      expect(@test_user).to_not eql(@user)
+      expect(@test_user).to be_nil
+    end
+    it 'should fail if wrong email' do
+      @test_user = User.authenticate_with_credentials('test2@test.com', 'basicpassword')
       p @test_user
       # expect(@test_user.first_name).to match("sampleName")
       expect(@test_user).to_not eql(@user)
