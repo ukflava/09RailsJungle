@@ -133,14 +133,14 @@ RSpec.describe User, type: :model do
 
     it 'should fail if wrong password' do
       @test_user = User.authenticate_with_credentials('test@test.com', 'wrongpassword')
-      p @test_user
+      # p @test_user
       # expect(@test_user.first_name).to match("sampleName")
       expect(@test_user).to_not eql(@user)
       expect(@test_user).to be_nil
     end
     it 'should fail if wrong email' do
       @test_user = User.authenticate_with_credentials('test2@test.com', 'basicpassword')
-      p @test_user
+      # p @test_user
       # expect(@test_user.first_name).to match("sampleName")
       expect(@test_user).to_not eql(@user)
       expect(@test_user).to be_nil
