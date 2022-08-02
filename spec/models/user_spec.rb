@@ -114,14 +114,28 @@ RSpec.describe User, type: :model do
 
     it 'should login if correct pair name-pass' do
 
-      @test_user = @user.authenticate_with_credentials('test@test.com', 'basicpassword')
+      @test_user = User.authenticate_with_credentials('test@test.com', 'basicpassword')
 
-      p @test_user.first_name
+      # p @test_user.first_name
+      # expect(@test_user).to be_valid
+      expect(@test_user.first_name).to match("sampleName")
+    end
+    it 'should login if email with whitespaces' do
 
-      expect(@test_user).to be_valid
+      @test_user = User.authenticate_with_credentials('   test@test.com   ', 'basicpassword')
+
+      # p @test_user.first_name
+      # expect(@test_user).to be_valid
+      expect(@test_user.first_name).to match("sampleName")
     end
 
     # examples for this class method here
+
+
+
+
+
+
   end
   
 end
