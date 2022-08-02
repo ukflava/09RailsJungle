@@ -49,6 +49,23 @@ RSpec.describe User, type: :model do
      expect(@user.errors.full_messages[0]).to include("Email can't be blank")
     
    end
+   it 'should not save if email already exists' do
+    @user2 = User.new
+            
+    @user2.first_name= 'sampleName2'
+    @user2.last_name= 'sample LastName2'
+    @user2.password= 'basicpassword2'
+    @user2.password_confirmation= 'basicpassword2'
+    @user2.email= 'TEST@TEST.com'
+
+    @user2.save
+    
+    p @user2.errors.full_messages
+   expect(@user2).to_not be_valid
+   expect(@user2.errors.full_messages[0]).to be_present
+   expect(@user2.errors.full_messages[0]).to include("Email has already been taken")
+  
+ end
 
     it 'should not save if no password' do
       @user.password= nil
@@ -60,7 +77,7 @@ RSpec.describe User, type: :model do
       
     end
 
-    it 'should not save if password too short' do
+    it 'should not save if passwords are same but too short' do
      
       @user.password= "dffd"
       @user.password_confirmation= 'dffd'
