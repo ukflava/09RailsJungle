@@ -48,6 +48,7 @@ before(() => {
     cy.get('[id=user_password_confirmation]').type("Millertestcom");
     cy.get('[id=registerButton]').click().wait(500);
     cy.contains("Account created successfully!").should('not.exist');
+    cy.contains("Email has already been taken")
 
 
   });
