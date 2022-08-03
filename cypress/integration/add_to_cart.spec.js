@@ -3,7 +3,7 @@ describe("Appointment", () => {
     // cy.request("GET", "/api/debug/reset");
     cy.visit("/");
     // cy.contains("You must be logged in to access this page.");
-   });
+  });
 
   // it("Should book an interview", () => {
   //   cy.get("[alt=Add]")
@@ -41,4 +41,4 @@ describe("Appointment", () => {
 
  
 
-})
+});
