@@ -20,12 +20,17 @@ describe("Appointment", () => {
   //   cy.contains(".appointment__card--show", "Sylvia Palmer");
   // });
 
-  it("There is products on the page", () => {
-    cy.get(".products article").should("be.visible");
-  });
+  // it("add to cart", () => {
+  //   cy.get(".products article").should("be.visible");
+  //   cy.get('.button_to')
+  //   // .first().wait(500)
+  //   .click().wait(500);
+  //   cy.get("[class='nav-item end-0']").click({ multiple: true });
+  //   cy.contains("TOTAL");
+  // });
 
 
-  it("There is 2 products on the page", () => {
+  it("add to cart", () => {
   //   cy.get(".products article").should("have.length", 2);
     cy.get("[alt='Scented Blade']").click().wait(500);
     cy.get("[type='submit']").click({ multiple: true }).wait(500);
