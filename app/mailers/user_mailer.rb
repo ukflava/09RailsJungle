@@ -8,6 +8,7 @@ class UserMailer < ApplicationMailer
   # end
   def send_email order
     @order = order
+    p order.email
     mail(to: @order.email, subject: "You order: #{@order.id} confirmed.")
   end
 
